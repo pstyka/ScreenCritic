@@ -15,7 +15,7 @@
         <nav id="topNav">
             <button onclick="goToHomePage()">Strona główna</button>
             <button onclick="toggleCategories()">Kategorie</button>
-            <button onclick="read_movie_list()">Losowy Film</button>
+            <button onclick="randomMovie()">Losowy Film</button>
             <button onclick="profile()">Profil</button>
         </nav>
     </header>
@@ -28,23 +28,5 @@
         <!-- Filmy będą dynamicznie dodawane tutaj za pomocą JavaScript -->
     </section>
 
-    <script>
-        let categoriesVisible = false;
-
-        function toggleCategories() {
-            const categoriesNav = document.getElementById("categoriesNav");
-
-            // Jeśli kategorie są widoczne, to ukryj je
-            if (categoriesVisible) {
-                categoriesNav.style.display = 'none';
-                categoriesVisible = false;
-            } else {
-                // Jeśli kategorie są ukryte, to pokaż je
-                categoriesNav.style.display = 'block';
-                categoriesVisible = true;
-            }
-        }
-    </script>
 </body>
-
 </html>

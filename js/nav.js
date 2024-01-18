@@ -3,27 +3,31 @@ function goToHomePage() {
     window.location.href = "main.html";
 }
 
-// Dodaj funkcje obsługujące przyciski (categories, randomMovie, profile)
-// function categories() {
-//     var endpoint = "http://127.0.0.1:8000/categories";
-//     fetch(endpoint, {
-//         method: "GET",
-//         credentials: 'include',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     }).then((response) => response.json()).then((data) => {
-//         console.log(data);
-//     }).catch((error) => {
-//         console.log(error);
-//     });
-// }
+// Zmienna do przechowywania kategorii
+let allCategories = [];
+let categoriesVisible = false;
 
- function categories() {
-     var endpoint = "http://127.0.0.1:8000/movie/categories";
+// Funkcja do pokazywania lub ukrywania kategorii
+function toggleCategories() {
+    const categoriesNav = document.getElementById("categoriesNav");
+
+    // Sprawdź, czy kategorie są widoczne
+    if (categoriesVisible) {
+        categoriesNav.innerHTML = ''; // Usuń istniejące przyciski
+        categoriesVisible = false;
+    } else {
+        // Jeśli kategorie są ukryte, to pokaż je
+        displayCategories(allCategories);
+        categoriesVisible = true;
+    }
+}
+
+// Funkcja do pobierania kategorii z backendu
+function getCategories() {
+    var endpoint = "http://127.0.0.1:8000/movie/categories";
 
     // Wysłanie żądania GET do backendu
-    fetch(endpoint, {
+    return fetch(endpoint, {
         method: "GET",
         credentials: 'include',
         headers: {
@@ -31,13 +35,18 @@ function goToHomePage() {
         }
     })
     .then((response) => response.json())
-    .then((data) => {
-        // Obsługa danych otrzymanych z backendu
-        displayCategories(data);
-    })
     .catch((error) => {
-        console.error('Błąd podczas wczytywania kategorii: ', error);
+        console.error('Błąd podczas pobierania kategorii: ', error);
     });
+}
+
+// Funkcja do inicjalizacji kategorii
+function initializeCategories() {
+    getCategories()
+        .then((data) => {
+            // Przypisz pobrane kategorie do zmiennej
+            allCategories = data;
+        });
 }
 
 // Funkcja do wyświetlania kategorii na stronie
@@ -47,20 +56,60 @@ function displayCategories(categories) {
     categories.forEach(category => {
         const categoryButton = document.createElement("button");
         categoryButton.textContent = category.name;
-        // Dodanie obsługi zdarzenia dla przycisku kategorii
         categoryButton.addEventListener("click", function() {
-            // Możesz dodać kod obsługujący wybór kategorii
-            alert("Wybrano kategorię: " + category.name);
             loadMoviesByCategory(category.id);
         });
         categoriesNav.appendChild(categoryButton);
     });
 }
 
+// Wywołaj funkcję inicjalizacji kategorii przy załadowaniu strony
+window.onload = initializeCategories;
 
+
+//BREAKPOINT
+//  function categories() {
+//      var endpoint = "http://127.0.0.1:8000/movie/categories";
+
+//     // Wysłanie żądania GET do backendu
+//     fetch(endpoint, {
+//         method: "GET",
+//         credentials: 'include',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     .then((response) => response.json())
+//     .then((data) => {
+//         // Obsługa danych otrzymanych z backendu
+//         displayCategories(data);
+//     })
+//     .catch((error) => {
+//         console.error('Błąd podczas wczytywania kategorii: ', error);
+//     });
+// }
+
+// // Funkcja do wyświetlania kategorii na stronie
+// function displayCategories(categories) {
+//     const categoriesNav = document.getElementById("categoriesNav");
+
+//     categories.forEach(category => {
+//         const categoryButton = document.createElement("button");
+//         categoryButton.textContent = category.name;
+//         // Dodanie obsługi zdarzenia dla przycisku kategorii
+//         categoryButton.addEventListener("click", function() {
+//             // Możesz dodać kod obsługujący wybór kategorii
+//             alert("Wybrano kategorię: " + category.name);
+//             loadMoviesByCategory(category.id);
+//         });
+//         categoriesNav.appendChild(categoryButton);
+//     });
+// }
+
+
+// Funkcja do pobierania i wyświetlania filmów dla danej kategorii
 function loadMoviesByCategory(categoryId) {
-    var endpoint = `http://127.0.0.1:8000/movie/category/${categoryId}`;
-
+    var endpoint = `http://127.0.0.1:8000/movie/${categoryId}`;
     fetch(endpoint, {
         method: "GET",
         credentials: 'include',
@@ -69,28 +118,25 @@ function loadMoviesByCategory(categoryId) {
         }
     })
     .then((response) => response.json())
-    .then((data) => {
-        console.log('Dane otrzymane z backendu:', data);
-
-        // Upewnij się, że data to obiekt JSON
-        if (typeof data === 'object' && data !== null) {
-            // Obsługa danych otrzymanych z backendu
-            displayMoviesFromFetch(data);
-        } else {
-            console.error('Błąd podczas wczytywania filmów dla danej kategorii: Nieprawidłowy format danych');
-        }
+    .then((movies) => {
+        // Obsługa danych otrzymanych z backendu
+        displayMovies(movies);
     })
     .catch((error) => {
         console.error('Błąd podczas wczytywania filmów dla danej kategorii: ', error);
     });
 }
 
-function displayMoviesFromFetch(movies) {
-    const favoriteMoviesSection = document.getElementById("favoriteMoviesSection");
+// Funkcja do wyświetlania filmów na stronie
+function displayMovies(movies) {
+    const moviesSection = document.getElementById("moviesSection");
+    moviesSection.innerHTML = ''; // Wyczyść istniejące filmy przed dodaniem nowych
 
-    movies.forEach(movie => {
+    let moviesArray = Array.isArray(movies) ? movies : [movies]; // Jeśli nie jest tablicą, utwórz tablicę
+
+    moviesArray.forEach(movie => {
         const movieElement = document.createElement("div");
-        movieElement.classList.add("favorite-movie");
+        movieElement.classList.add("movie");
 
         const titleElement = document.createElement("h2");
         titleElement.textContent = movie.title;
@@ -106,7 +152,7 @@ function displayMoviesFromFetch(movies) {
         movieElement.appendChild(imgElement);
         movieElement.appendChild(descriptionElement);
 
-        favoriteMoviesSection.appendChild(movieElement);
+        moviesSection.appendChild(movieElement);
     });
 }
 

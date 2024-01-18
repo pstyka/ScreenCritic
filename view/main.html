@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/main.js"></script>
+    <script src="../js/nav.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Screen Critic</h1>
+        <nav id="topNav">
+            <button onclick="goToHomePage()">Strona główna</button>
+            <button onclick="toggleCategories()">Kategorie</button>
+            <button onclick="read_movie_list()">Losowy Film</button>
+            <button onclick="profile()">Profil</button>
+        </nav>
+    </header>
+
+    <nav id="categoriesNav">
+        <!-- Kategorie będą dynamicznie dodawane tutaj za pomocą JavaScript -->
+    </nav>
+
+    <section id="moviesSection">
+        <!-- Filmy będą dynamicznie dodawane tutaj za pomocą JavaScript -->
+    </section>
+
+    <script>
+        let categoriesVisible = false;
+
+        function toggleCategories() {
+            const categoriesNav = document.getElementById("categoriesNav");
+
+            // Jeśli kategorie są widoczne, to ukryj je
+            if (categoriesVisible) {
+                categoriesNav.style.display = 'none';
+                categoriesVisible = false;
+            } else {
+                // Jeśli kategorie są ukryte, to pokaż je
+                categoriesNav.style.display = 'block';
+                categoriesVisible = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

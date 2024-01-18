@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/movie.css">
+    <script src="../js/movie.js"></script>
+    <script src="../js/nav.js"></script>
+    <title>Film</title>
+</head>
+<body>
+    <nav id="topNav">
+        <button onclick="goToHomePage()">Strona główna</button>
+        <button onclick="categories()">Kategorie</button>
+        <button onclick="randomMovie()">Losowy Film</button>
+        <button onclick="profile()">Profil</button>
+    </nav>
+
+    <nav id="categoriesNav">
+        <!-- Kategorie będą dynamicznie dodawane tutaj za pomocą JavaScript -->
+    </nav>
+
+    <section id="moviesSection">
+        <!-- Filmy będą dynamicznie dodawane tutaj za pomocą JavaScript -->
+        <!-- Przykładowy film -->
+        <div class="movie">
+            <h2>Tytuł Filmu</h2>
+            <img src="../jaroslaw-kaczynski-753x424-gov-pl.jpg" alt="Tytuł Filmu">
+            <p>Krótki opis filmu.</p>
+            <button onclick="addRating()">Dodaj ocenę</button>
+        </div>
+    </section>
+</body>
+
+</html>

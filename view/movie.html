@@ -3,33 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/movie.css">
-    <script src="../js/movie.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- <script defer src="../js/main.js"></script> -->
     <script src="../js/nav.js"></script>
-    <title>Film</title>
 </head>
 <body>
-    <nav id="topNav">
-        <button onclick="goToHomePage()">Strona główna</button>
-        <button onclick="toggleCategories()">Kategorie</button>
-        <button onclick="randomMovie()">Losowy Film</button>
-        <button onclick="profile()">Profil</button>
-    </nav>
-
-    <nav id="categoriesNav">
-        <!-- Kategorie będą dynamicznie dodawane tutaj za pomocą JavaScript -->
-    </nav>
-
-    <section id="moviesSection">
-        <!-- Filmy będą dynamicznie dodawane tutaj za pomocą JavaScript -->
-        <!-- Przykładowy film -->
-        <div class="movie">
-            <h2>Tytuł Filmu</h2>
-            <img src="../image.png" alt="Tytuł Filmu">
-            <p>Krótki opis filmu.</p>
-            <button onclick="addRating()">Dodaj ocenę</button>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <button onclick="goToHomePage()">
+                    <p>Screen</p>
+                    <p>Critic</p>
+                </button>
+            </div>
+            <form class="search-bar">
+                <div><i class="material-icons">search</i></div>
+                <input type="text" name="search" id="search" placeholder="Wyszukaj movie">
+            </form>
+            <div class="nav-buttons">
+                <div class="column" id="upper">
+                    <button>PROFIL</button>
+                    <button onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                </div>
+                <div class="column" id="lower">
+                    <div class="categories">
+                        <button id="categories" onmouseover="toggleCategories()">KATEGORIE</button>
+                    </div>
+                    <button id="random-movie">LOSOWY FILM</button>
+                </div>
+            </div>
         </div>
-    </section>
-</body>
+        <section id="movie-description">
+            <h1>Zagadka Niebieskiej Planety</h1>
+            <div class="columns">
+                <div class="left-column">
+                    <img src="../img/jaroslaw-kaczynski-753x424-gov-pl.jpg">
+                </div>
+                <div class="right-column">
+                    <div class="description">
+                        <h2>Reżyseria: Lena Oceńska</h2>
+                        <h2>Data premiery: 2024-02-21</h2>
+                        <h2>Opis:</h2>
+                        <p>Dokument odkrywający tajemnice głębin oceanów.</p>
+                    </div>
+                    <div class="rating">
+                        <h2>Średnia ocena: 9.9</h2>
+                    </div>
+                </div>
+            </div>
 
+        </section>
+    </div>
+</body>
 </html>

@@ -24,6 +24,7 @@ function login() {
     .then((data) => {
         console.log('Received:', data);
         alert("Zalogowano :)");
+        window.location.href = "main.html";
     })
     .catch((error) => {
         console.log('Error:', error);

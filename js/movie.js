@@ -37,9 +37,26 @@ function showMovieDetails(movieId) {
     });
 }
 
-// Dodaj funkcję obsługującą przycisk "Dodaj ocenę"
-function addRating() {
-    // Logika dla przycisku "Dodaj ocenę"
-    alert("Dodaj ocenę");
-}
+function addComment() {
+    // Pobierz treść nowego komentarza z textarea
+    var newCommentText = document.getElementById("new-comment").value;
 
+    // Sprawdź, czy komentarz nie jest pusty
+    if (newCommentText.trim() === "") {
+        alert("Komentarz nie może być pusty!");
+        return;
+    }
+
+    // Stwórz nowy element komentarza
+    var newCommentElement = document.createElement("div");
+    newCommentElement.textContent = newCommentText;
+
+    // Dodaj nowy komentarz do kontenera komentarzy
+    var commentsContainer = document.getElementById("comments-container");
+    commentsContainer.appendChild(newCommentElement);
+
+    // Wyczyść pole tekstowe po dodaniu komentarza
+    document.getElementById("new-comment").value = "";
+
+    alert("Twój komentarz został dodany!");
+}

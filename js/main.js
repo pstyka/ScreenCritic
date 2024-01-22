@@ -1,7 +1,6 @@
 window.onload = displayMovies();
 
 function displayMovies() {
-    console.log(document.cookie);       //test
     var endpoint = "http://127.0.0.1:8000/movie/search";
     const moviesContainer = document.getElementById("movie-section");
     fetch(endpoint, {
@@ -71,21 +70,32 @@ function add_movie_to_list() {
 
 // Funkcja do wyświetlania profilu użytkownika
 function displayProfile() {
-    //window.location.href = "profile.html";
     var endpoint = "http://127.0.0.1:8000/auth/me";
     fetch(endpoint, {
-        method: "GET",  // Używamy metody GET do pobrania danych o użytkowniku
-        credentials: 'include',
+        method: "GET",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('userToken')
         }
-    }).then((response) => response.json()).then((data) => {
+    }).then((response) => {
+        if (!response.ok) {
+            if (response.status === 401 || response.status === 403) {
+                // Przekierowanie na main.html w przypadku braku autoryzacji
+                window.location.href = 'main.html';
+                return;
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }).then((data) => {
         console.log(data);
+        // Tutaj możemy wykorzystać dane 'data' do wyświetlenia profilu użytkownika
     }).catch((error) => {
         console.log(error);
+        // Obsługa innych błędów
     });
 
-    localStorage.setItem('username', 'Grzesiek dupa a nie backendowiec');
+    localStorage.setItem('username', 'Adam Męczydupa');
     localStorage.setItem('email', 'adammeczydupa@gmail.com');
     localStorage.setItem('rank', 'użytkownik bambik');
     

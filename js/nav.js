@@ -56,20 +56,31 @@ function initializeCategories() {
 // Funkcja do wyświetlania kategorii na stronie
 function displayCategories(categories) {
     const categoriesNav = document.getElementById("categoriesNav");
-
+    
     categories.forEach(category => {
         const categoryButton = document.createElement("button");
         categoryButton.textContent = category.name;
         categoryButton.addEventListener("click", function() {
             loadMoviesByCategory(category.id);
         });
+        console.log(categoryButton)
         categoriesNav.appendChild(categoryButton);
     });
 }
 
 // Wywołaj funkcję inicjalizacji kategorii przy załadowaniu strony
-window.onload = initializeCategories;
+window.onload = {
+    initializeCategories
+}
 
+function checkIfLogged() {
+    if (localStorage.getItem('userToken')) {
+        const loginButton = document.getElementById('login');
+        const logoutButton = document.getElementById('logout');
+        loginButton.style.display = 'none';
+        logoutButton.style.display = 'block';
+    }
+}
 
 // Funkcja do pobierania i wyświetlania filmów dla danej kategorii
 function loadMoviesByCategory(categoryId) {
@@ -106,7 +117,7 @@ function displayMovies(movies) {
         titleElement.setAttribute('data-id',movie.id);
 
         const imgElement = document.createElement("img");
-        imgElement.src = "../img/image.png";
+        imgElement.src = "https://avatars.githubusercontent.com/u/94792342?v=4";
         imgElement.alt = movie.title;
         imgElement.setAttribute('data-id',movie.id);
 

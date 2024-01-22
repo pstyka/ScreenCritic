@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script defer src="../js/main.js"></script>
     <script defer src="../js/nav.js"></script>
+    <script defer src="../js/profile.js"></script>
 </head>
 <body>
     <div class="container">
@@ -26,7 +27,8 @@
             <div class="nav-buttons">
                 <div class="column" id="upper">
                     <button onclick="displayProfile()">PROFIL</button>
-                    <button onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="login" onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="logout" onclick="logout()">WYLOGUJ</button>
                 </div>
                 <div class="column" id="lower">
                     <div class="categories">

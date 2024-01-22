@@ -85,6 +85,10 @@ button:hover {
     font-size: 18px;
 }
 
+#logout {
+    display: none;
+}
+
 .search-bar {
     display: flex;
     width: 35%;

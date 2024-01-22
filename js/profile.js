@@ -1,13 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
-    displayProfile();
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     displayProfile();
+// });
 
 function readMovieList() {
     alert("readMovieList")
 }
 
 function logout() {
-    alert("logout");
-}
+    localStorage.removeItem('userToken');
+    window.location.href = 'login.html';
+  }
 
 

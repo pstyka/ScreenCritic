@@ -1,5 +1,4 @@
 function login() {
-    document.cookie = "status=not_login";
     const endpoint = "http://127.0.0.1:8000/auth/login";
 
     const username = document.getElementById("username").value;
@@ -24,8 +23,7 @@ function login() {
     })
     .then((data) => {
         console.log('Received:', data);
-        alert("Zalogowano :)");
-        document.cookie = "status=login";       //test
+        localStorage.setItem('userToken', data.access_token);
         window.location.href = "main.html";
     })
     .catch((error) => {

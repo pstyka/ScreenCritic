@@ -27,7 +27,8 @@
             <div class="nav-buttons">
                 <div class="column" id="upper">
                     <button>PROFIL</button>
-                    <button onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="login" onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="logout" onclick="logout()">WYLOGUJ</button>
                 </div>
                 <div class="column" id="lower">
                     <div class="categories">
@@ -59,9 +60,14 @@
         <section id="comments-section">
             <h2>Komentarze</h2>
             <textarea id="new-comment" placeholder="Dodaj nowy komentarz"></textarea>
+
+            <!-- Dodaj suwak do wyboru oceny -->
+            <label for="rating-slider">Ocena: </label>
+            <input type="range" id="rating-slider" min="0" max="10" step="1">
+            <span id="selected-rating"></span>
+
             <button onclick="addComment()">Dodaj Komentarz</button>
             <div id="comments-container">
-                Konstruktywna krytyka filmu.
             </div>
         </section>
     </div>

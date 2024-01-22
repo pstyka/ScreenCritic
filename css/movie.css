@@ -14,3 +14,13 @@ h1 {
     font-weight: normal;
     border-radius: 1em;
 }
+
+textarea {
+    resize: none;
+}
+
+img { 
+    border-radius: 4em;
+    width: 400px;
+    margin-right: 50px;
+}

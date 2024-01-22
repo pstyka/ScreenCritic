@@ -90,6 +90,38 @@ function loadMoviesByCategory(categoryId) {
         console.error('Błąd podczas wczytywania filmów dla danej kategorii: ', error);
     });
 }
+function displayMovies(movies) {
+    const moviesSection = document.getElementById("movie-section");
+    moviesSection.innerHTML = ''; // Wyczyść istniejące filmy przed dodaniem nowych
+
+    let moviesArray = Array.isArray(movies) ? movies : [movies]; // Jeśli nie jest tablicą, utwórz tablicę
+
+    moviesArray.forEach(movie => {
+        const movieElement = document.createElement("div");
+        movieElement.classList.add("movie");
+        movieElement.setAttribute('data-id',movie.id);
+
+        const titleElement = document.createElement("h2");
+        titleElement.textContent = movie.title;
+        titleElement.setAttribute('data-id',movie.id);
+
+        const imgElement = document.createElement("img");
+        imgElement.src = "../img/image.png";
+        imgElement.alt = movie.title;
+        imgElement.setAttribute('data-id',movie.id);
+
+        const descriptionElement = document.createElement("p");
+        descriptionElement.textContent = movie.description;
+        descriptionElement.setAttribute('data-id',movie.id);
+
+        movieElement.appendChild(imgElement);
+        movieElement.appendChild(titleElement);
+
+        movieElement.appendChild(descriptionElement);
+
+        moviesSection.appendChild(movieElement);
+    });
+}
 
 function randomMovie() {
     // Logika dla przycisku "Losowy Film"

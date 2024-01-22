@@ -18,6 +18,7 @@ function displayMovies() {
 
             const image = document.createElement('img');
             image.src = '../img/jaroslaw-kaczynski-753x424-gov-pl.jpg';
+            
             image.setAttribute('data-id', movie.id);
 
             const titleElement = document.createElement('h2');

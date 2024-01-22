@@ -1,6 +1,7 @@
 window.onload = displayMovies();
 
 function displayMovies() {
+    console.log(document.cookie);       //test
     var endpoint = "http://127.0.0.1:8000/movie/search";
     const moviesContainer = document.getElementById("movie-section");
     fetch(endpoint, {
@@ -17,7 +18,7 @@ function displayMovies() {
             movieDiv.setAttribute('data-id', movie.id);
 
             const image = document.createElement('img');
-            image.src = '../img/jaroslaw-kaczynski-753x424-gov-pl.jpg';
+            image.src = 'https://a.allegroimg.com/original/117865/a3b32d1b41bd9c4957632e04337a/KALENDARZ-SCIENNY-FORMAT-A4-DLA-MECHANIKA-NAGIE-KOBIETY-2024-ROK-PREZENT-Y4-Kod-producenta-KALENDARZ-SCIENNY-A4';
             
             image.setAttribute('data-id', movie.id);
 
@@ -48,7 +49,7 @@ function displayMovies() {
             const movieId = event.target.getAttribute('data-id');
             
             // Wywołaj funkcję showMovieDetails z przekazanym parametrem movieId
-            showMovieDetails(movieId);
+            window.location.href = 'movie.html?movieId=' + movieId;
         }
     });
 }
@@ -66,4 +67,45 @@ function add_movie_to_list() {
     }).catch((error) => {
         console.log(error);
     });
+}
+
+// Funkcja do wyświetlania profilu użytkownika
+function displayProfile() {
+    //window.location.href = "profile.html";
+    var endpoint = "http://127.0.0.1:8000/auth/me";
+    fetch(endpoint, {
+        method: "GET",  // Używamy metody GET do pobrania danych o użytkowniku
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => response.json()).then((data) => {
+        console.log(data);
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    localStorage.setItem('username', 'Grzesiek dupa a nie backendowiec');
+    localStorage.setItem('email', 'adammeczydupa@gmail.com');
+    localStorage.setItem('rank', 'użytkownik bambik');
+    
+    var username = localStorage.getItem('username');
+    var email = localStorage.getItem('email');
+    var rank = localStorage.getItem('rank');
+
+    if (username && email && rank) {
+        console.log(username, email, rank);
+        var profileInfo = document.querySelector('.profile-info');
+        profileInfo.innerHTML = `
+            <h2>Username: ${username}</h2>
+            <p>Email: ${email}</p>
+            <p>Ranga: ${rank}</p>
+        `;
+    } else {
+        goToLogin();
+    }
+}
+
+function goToLogin() {
+    window.location.href = "login.html";
 }

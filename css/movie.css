@@ -7,3 +7,10 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+#comments-section button {
+    color: black;
+    border: 1px solid black;
+    font-weight: normal;
+    border-radius: 1em;
+}

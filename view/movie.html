@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona Główna</title>
+    <title>Strona filmu</title>
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/movie.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- <script defer src="../js/main.js"></script> -->
     <script src="../js/nav.js"></script>
+    <script src="../js/movie.js"></script>
 </head>
 <body>
     <div class="container">
@@ -37,24 +38,31 @@
             </div>
         </div>
         <section id="movie-description">
-            <h1>Zagadka Niebieskiej Planety</h1>
+            <h1 id="title"></h1>
             <div class="columns">
                 <div class="left-column">
                     <img src="../img/jaroslaw-kaczynski-753x424-gov-pl.jpg">
                 </div>
                 <div class="right-column">
                     <div class="description">
-                        <h2>Reżyseria: Lena Oceńska</h2>
-                        <h2>Data premiery: 2024-02-21</h2>
+                        <h2 id="director">Reżyser: </h2>
+                        <h2 id="premiereDate">Data premiery: </h2>
                         <h2>Opis:</h2>
-                        <p>Dokument odkrywający tajemnice głębin oceanów.</p>
+                        <p id="description"></p>
                     </div>
                     <div class="rating">
-                        <h2>Średnia ocena: 9.9</h2>
+                        <h2 id="averageRating">Średnia ocena: </h2>
                     </div>
                 </div>
             </div>
-
+        </section>
+        <section id="comments-section">
+            <h2>Komentarze</h2>
+            <textarea id="new-comment" placeholder="Dodaj nowy komentarz"></textarea>
+            <button onclick="addComment()">Dodaj Komentarz</button>
+            <div id="comments-container">
+                Konstruktywna krytyka filmu.
+            </div>
         </section>
     </div>
 </body>

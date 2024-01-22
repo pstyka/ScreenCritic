@@ -77,13 +77,6 @@ button:hover {
 #lower button:hover {
     background-color: white;
     color:black;
-}
-
-#random-movie:hover {
-    border-radius: 1em;
-}
-
-#categories:hover {
     padding-bottom: 1.5em;
     border-radius: 1em 1em 0 0;
 }
@@ -123,6 +116,15 @@ button:hover {
 ::-webkit-input-placeholder {
     color: white;
     letter-spacing: 1px;;
+}
+
+#categoriesNav {
+    display: flex;
+    flex-direction: column;
+}
+
+#categoriesNav button {
+    color: black;
 }
 
 /* Dodatkowy styl dla rozwijanej listy kategorii */

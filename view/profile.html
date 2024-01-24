@@ -3,34 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/profile.css">    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="../js/profile.js"></script>
-    <script src="../js/nav.js"></script>
     <title>Profil</title>
 </head>
 <body>
-    <nav id="topNav">
-        <button onclick="goToHomePage()">Strona główna</button>
-        <button onclick="toggleCategories()">Kategorie</button>
-        <button onclick="randomMovie()">Losowy Film</button>
-        <button onclick="profile()">Profil</button>
-    </nav>
-
-    <nav id="categoriesNav">
-        <!-- Kategorie będą dynamicznie dodawane tutaj za pomocą JavaScript -->
-    </nav>
-
-    <div class="profile-container">
-        <div class="profile-info">
-            <h2>Username: JohnHoe</h2>
-            <p>Email: john.hoe@example.com</p>
-            <p>Ranga: Użytkownik bambik</p>
-        </div>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <button onclick="goToHomePage()">
+                    <p>Screen</p>
+                    <p>Critic</p>
+                </button>
+            </div>
+            <form class="search-bar">
+                <div><i class="material-icons">search</i></div>
+                <input type="text" name="search" id="search" placeholder="Wyszukaj film...">
+            </form>
+            <div class="nav-buttons">
+                <div class="column" id="upper">
+                    <button onclick="goToProfile()">PROFIL</button>
+                    <button id="login" onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="logout" onclick="logout()">WYLOGUJ</button>
+                </div>
+                <div class="column" id="lower">
+                    <div class="categories">
+                        <button id="categories" onclick="goToHomePage()">KATEGORIE</button>
+                    </div>
+                    <button id="random-movie" onclick="goToHomePage()">LOSOWY FILM</button>
+                </div>
+            </div>
+        </div>  
+        <nav id="categoriesNav"></nav>
+        <section id="random-movies"></section>
+        <section id="search-by-name"></section>
+        <section id="profile-details">
+            <div class="columns">
+                <div class="left-column">
+                    <img src="../img/aa.jpg">
+                </div>
+                <div class="right-column">
+                    <div class="details">
+                        <h2>Username: <span id="username" class="non-bolded"></span></h2>
+                        <h2>Email: <span id ="email" class="non-bolded"></span></h2>
+                        <h2>Rank: <span id ="rank" class="non-bolded"></span></h2>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <button onclick="readMovieList()">Moja lista</button>
-        <button onclick="logout()">Wyloguj</button>
-    </div>
-
+        <h2>Moja lista</h2>
+        <section id="my-list">
+            <div class="my-list-movies"></div>
+        </section>
+        <button id = "add-movie-to-list" onclick="">Dodaj film</button>
+    </div>  
 </body>
 </html>
 

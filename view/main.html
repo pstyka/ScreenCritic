@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script defer src="../js/main.js"></script>
-    <script defer src="../js/movie.js"></script>
     <script defer src="../js/nav.js"></script>
+    <!-- <script defer src="../js/profile.js"></script> -->
 </head>
 <body>
     <div class="container">
@@ -26,26 +26,24 @@
             </form>
             <div class="nav-buttons">
                 <div class="column" id="upper">
-                    <button>PROFIL</button>
-                    <button onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button onclick="goToProfile()">PROFIL</button>
+                    <button id="login" onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
+                    <button id="logout" onclick="logout()">WYLOGUJ</button>
                 </div>
                 <div class="column" id="lower">
                     <div class="categories">
                         <button id="categories" onmouseover="toggleCategories()">KATEGORIE</button>
                     </div>
-                    <button id="random-movie">LOSOWY FILM</button>
+                    <button id="random-movie" onmouseover="toggleRandomCategories()">LOSOWY FILM</button>
                 </div>
             </div>
-        </div>
-        <section id="movie-section">
-            <!-- <div class="movie">
-                <img src="../img/jaroslaw-kaczynski-753x424-gov-pl.jpg">
-                <h2>Title</h2>
-                <button>
-                    <p><i class="material-icons">favorite_border</i>Ulubione</p>
-                </button>
-            </div> -->
+        </div>  
+        <nav id="categoriesNav"></nav>
+        <section id="movie-section"></section>
+        <section id="random-movies"></section>
+        <section id="search-by-name">
         </section>
+
      </div>  
 </body>
 </html>

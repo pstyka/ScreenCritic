@@ -7,3 +7,106 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+#comments-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+    width: 80%;
+    margin: auto;
+}
+
+#comments-section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    gap: 0.3em;
+}
+
+#comments-section button {
+    color: black;
+    border: 1px solid black;
+    font-weight: normal;
+    border-radius: 1em;
+    padding: 1em;
+    width: 100%;
+}
+
+#comments-section button:hover {
+    color: white;
+    background-color: black;
+    transition: 0.4s;
+}
+
+#comments-section textarea {
+    resize: none;
+    font-size: 1em;
+    height: 120px;
+    border: none;
+    background: #e0dede;
+    margin: 0.5em 0;
+    padding: 1.5em 2em;
+    border: 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1em;
+}
+
+#comments-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    width: 80%;
+}
+
+#comments-container .comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    max-width: 200px;
+    border-radius: 10px;
+    padding: 1em;
+    overflow-wrap: break-word;
+}
+
+#comments-container .comment p {
+    text-align: justify;
+    padding: 0.2em;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+#comments-container button {
+    padding: 0.3em;
+    font-size: 1em;
+    width: 50%;
+}
+
+img { 
+    border-radius: 4em;
+    width: 400px;
+    margin-right: 50px;
+}
+
+.right-column button {
+    color: black;
+    border: 1px solid black;
+    font-weight: normal;
+    border-radius: 1em;
+    padding: 0.6em;
+    width: 30%;
+}
+
+.right-column button:hover {
+    color: white;
+    background-color: black;
+    transition: 0.4s;
+}

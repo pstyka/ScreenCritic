@@ -77,19 +77,16 @@ button:hover {
 #lower button:hover {
     background-color: white;
     color:black;
-}
-
-#random-movie:hover {
-    border-radius: 1em;
-}
-
-#categories:hover {
     padding-bottom: 1.5em;
     border-radius: 1em 1em 0 0;
 }
 
 #upper button {
     font-size: 18px;
+}
+
+#logout {
+    display: none;
 }
 
 .search-bar {
@@ -125,7 +122,15 @@ button:hover {
     letter-spacing: 1px;;
 }
 
-/* Dodatkowy styl dla rozwijanej listy kategorii */
+#categoriesNav {
+    display: flex;
+    flex-direction: column;
+}
+
+#categoriesNav button {
+    color: black;
+}
+
 #categoriesNav .hidden {
     display: none;
 }

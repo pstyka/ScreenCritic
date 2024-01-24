@@ -91,14 +91,50 @@ function showMyList() {
             const descriptionElement = document.createElement('p');
             descriptionElement.textContent = movie.description;
             descriptionElement.setAttribute('data-id', movie.id);
-        
+
+            const deleteButton = document.createElement('button');
+            deleteButton.setAttribute('onclick', `deleteFromList(\'${movie.id}\')`);
+            deleteButton.textContent = 'Usuń z listy';
+
             movieDiv.appendChild(image);
             movieDiv.appendChild(titleElement);
             movieDiv.appendChild(descriptionElement);
+            movieDiv.appendChild(deleteButton);
         
             moviesContainer.appendChild(movieDiv);
         }); 
     }).catch((error) => {
         console.log(error);
     });
+
+    moviesContainer.addEventListener('click', function(event) {
+        if (event.target.getAttribute('data-id')) {
+          const movieId = event.target.getAttribute('data-id');
+            window.location.href = 'movie.html?movieId=' + movieId;
+        }
+    });
  }
+
+function deleteFromList(movieId) {
+    endpoint = 'http://127.0.0.1:8000/movie_list/' + movieId;
+    const token = localStorage.getItem("userToken");
+    fetch(endpoint, {
+        method: "DELETE",
+        credentials: 'include',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+    location.href = location.href;
+}
+
+
+
+
+
+

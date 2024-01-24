@@ -153,11 +153,8 @@ function addToList(movieId) {
         })
     }).then((response) => response.json())
     .then((data) => {
-        alert(data.detail)
-        return;
+        alert(data.detail);
     }).catch((error) => {
         console.log(error);
     });
-
-    alert('Dodano do ulubionych');
 }

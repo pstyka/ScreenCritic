@@ -25,7 +25,11 @@ function goToLogin() {
 }
 
 function goToProfile(){
-    window.location.href = "profile.html";
+    if (localStorage.getItem('userToken') === null) {
+        window.location.href = "login.html";
+    }
+    else
+        window.location.href = "profile.html";
 }
 
 function logout() {
@@ -80,7 +84,6 @@ function displayCategories(categories) {
 }
 
 function checkIfLogged() {
-    console.log(localStorage.getItem('userToken'))
     if (localStorage.getItem('userToken')) {
         const loginButton = document.getElementById('login');
         const logoutButton = document.getElementById('logout');

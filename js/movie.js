@@ -45,6 +45,11 @@ function showMovieDetails(movieId) {
 
 async function addComment() {
 
+    if (localStorage.getItem('userToken') === null) {
+        window.location.href = "login.html";
+        return;
+    }
+
     var newCommentText = document.getElementById("new-comment").value;
 
     if (newCommentText.trim() === "") {
@@ -58,9 +63,6 @@ async function addComment() {
     await add(rating, comment.value);
 
     comment.value = "";
-
-
-    alert("Twój komentarz został dodany!");
 
     getComments();
 }
@@ -139,6 +141,9 @@ getComments();
 
 function addToList(movieId) {
     const token = localStorage.getItem("userToken");
+    if (token === null) {
+        window.location.href = "login.html";
+    }
     endpoint = 'http://127.0.0.1:8000/movie_list'
    
     fetch(endpoint, {
@@ -153,7 +158,7 @@ function addToList(movieId) {
         })
     }).then((response) => response.json())
     .then((data) => {
-        alert(data.detail);
+        window.location.href = "profile.html"
     }).catch((error) => {
         console.log(error);
     });

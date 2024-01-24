@@ -17,7 +17,6 @@ function goToProfile(){
 }
 
 function checkIfLogged() {
-    console.log(localStorage.getItem('userToken'))
     if (localStorage.getItem('userToken')) {
         const loginButton = document.getElementById('login');
         const logoutButton = document.getElementById('logout');
@@ -46,7 +45,6 @@ function showProfileDetails() {
         }
     }).then((response) => response.json())
     .then((data) => {
-        console.log(data)
         const username = document.getElementById("username");
         username.textContent = data.username;
     

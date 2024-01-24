@@ -7,6 +7,10 @@ section {
     overflow-x: auto;
 }
 
+#movie-section {
+    overflow-y: none;
+}
+
 .movie {
     display: flex;
     flex-direction: column;

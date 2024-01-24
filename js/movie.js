@@ -36,7 +36,7 @@ function showMovieDetails(movieId) {
         const average_rating = document.getElementById("averageRating");
         average_rating.textContent += data.average_rating; 
         
-        button_add_to_list.setAttribute('data_id', movieId);
+        button_add_to_list.setAttribute('onclick', `addToList(\'${movieId}\')`);
 
     }).catch((error) => {
         console.log(error);
@@ -136,3 +136,28 @@ function getComments() {
 }
 
 getComments();
+
+function addToList(movieId) {
+    const token = localStorage.getItem("userToken");
+    endpoint = 'http://127.0.0.1:8000/movie_list'
+   
+    fetch(endpoint, {
+        method: "POST",
+        credentials: 'include',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            movie_id: movieId
+        })
+    }).then((response) => response.json())
+    .then((data) => {
+        alert(data.detail)
+        return;
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    alert('Dodano do ulubionych');
+}

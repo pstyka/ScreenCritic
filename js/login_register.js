@@ -95,3 +95,48 @@ function showRegisterForm() {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
 }
+function displayProfile() {
+    var endpoint = "http://127.0.0.1:8000/auth/me";
+    fetch(endpoint, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('userToken')
+        }
+    }).then((response) => {
+        if (!response.ok) {
+            if (response.status === 401 || response.status === 403) {
+                window.location.href = 'main.html';
+                return;
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+        
+    }).catch((error) => {
+        console.log(error);
+        
+    });
+
+    localStorage.setItem('username', 'Adam Męczydupa');
+    localStorage.setItem('email', 'adammeczydupa@gmail.com');
+    localStorage.setItem('rank', 'użytkownik bambik');
+    
+    var username = localStorage.getItem('username');
+    var email = localStorage.getItem('email');
+    var rank = localStorage.getItem('rank');
+
+    if (username && email && rank) {
+        console.log(username, email, rank);
+        var profileInfo = document.querySelector('.profile-info');
+        profileInfo.innerHTML = `
+            <h2>Username: ${username}</h2>
+            <p>Email: ${email}</p>
+            <p>Ranga: ${rank}</p>
+        `;
+    } else {
+        goToLogin();
+    }
+}

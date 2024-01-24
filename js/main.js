@@ -13,11 +13,11 @@ function displayMovies() {
     .then((data) => {
         data.forEach(movie => {
             const movieDiv = document.createElement('button');
-            movieDiv.classList.add('movie'); // Dodajemy klasę do stylizacji (opcjonalne)
+            movieDiv.classList.add('movie'); 
             movieDiv.setAttribute('data-id', movie.id);
 
             const image = document.createElement('img');
-            image.src = 'https://a.allegroimg.com/original/117865/a3b32d1b41bd9c4957632e04337a/KALENDARZ-SCIENNY-FORMAT-A4-DLA-MECHANIKA-NAGIE-KOBIETY-2024-ROK-PREZENT-Y4-Kod-producenta-KALENDARZ-SCIENNY-A4';
+            image.src = '../img/popcorn.png';
             
             image.setAttribute('data-id', movie.id);
 
@@ -28,13 +28,11 @@ function displayMovies() {
             const descriptionElement = document.createElement('p');
             descriptionElement.textContent = movie.description;
             descriptionElement.setAttribute('data-id', movie.id);
-
-            // Dodajemy elementy do diva filmu
+            
             movieDiv.appendChild(image);
             movieDiv.appendChild(titleElement);
             movieDiv.appendChild(descriptionElement);
-
-            // Dodajemy div filmu do kontenera na stronie
+            
             moviesContainer.appendChild(movieDiv);
         });
     }).catch((error) => {
@@ -42,12 +40,8 @@ function displayMovies() {
     });
 
     moviesContainer.addEventListener('click', function(event) {
-        // Sprawdzamy, czy kliknięto w przycisk
         if (event.target.getAttribute('data-id')) {
-            // Pobierz identyfikator z atrybutu data-id
-            const movieId = event.target.getAttribute('data-id');
-            
-            // Wywołaj funkcję showMovieDetails z przekazanym parametrem movieId
+          const movieId = event.target.getAttribute('data-id');
             window.location.href = 'movie.html?movieId=' + movieId;
         }
     });
@@ -68,7 +62,6 @@ function add_movie_to_list() {
     });
 }
 
-// Funkcja do wyświetlania profilu użytkownika
 function displayProfile() {
     var endpoint = "http://127.0.0.1:8000/auth/me";
     fetch(endpoint, {
@@ -80,7 +73,6 @@ function displayProfile() {
     }).then((response) => {
         if (!response.ok) {
             if (response.status === 401 || response.status === 403) {
-                // Przekierowanie na main.html w przypadku braku autoryzacji
                 window.location.href = 'main.html';
                 return;
             }
@@ -89,10 +81,10 @@ function displayProfile() {
         return response.json();
     }).then((data) => {
         console.log(data);
-        // Tutaj możemy wykorzystać dane 'data' do wyświetlenia profilu użytkownika
+        
     }).catch((error) => {
         console.log(error);
-        // Obsługa innych błędów
+        
     });
 
     localStorage.setItem('username', 'Adam Męczydupa');
@@ -116,6 +108,4 @@ function displayProfile() {
     }
 }
 
-function goToLogin() {
-    window.location.href = "login.html";
-}
+

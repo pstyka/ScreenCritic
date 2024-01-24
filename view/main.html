@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script defer src="../js/main.js"></script>
     <script defer src="../js/nav.js"></script>
-    <script defer src="../js/profile.js"></script>
+    <!-- <script defer src="../js/profile.js"></script> -->
 </head>
 <body>
     <div class="container">
@@ -26,7 +26,7 @@
             </form>
             <div class="nav-buttons">
                 <div class="column" id="upper">
-                    <button onclick="displayProfile()">PROFIL</button>
+                    <button onclick="goToProfile()">PROFIL</button>
                     <button id="login" onclick="goToLogin()">ZALOGUJ/ZAREJESTRUJ</button>
                     <button id="logout" onclick="logout()">WYLOGUJ</button>
                 </div>
@@ -38,34 +38,12 @@
                 </div>
             </div>
         </div>  
-        <nav id="categoriesNav">
-            
-        </nav>
-    
-        <section id="movie-section">
-            
-        </section>
-        <section id="random-movies">
-            
-        </section>
+        <nav id="categoriesNav"></nav>
+        <section id="movie-section"></section>
+        <section id="random-movies"></section>
         <section id="search-by-name">
         </section>
 
-
-
-
-
-
-
-        <!-- <section id="movie-section">
-             <div class="movie">
-                <img src="../img/jaroslaw-kaczynski-753x424-gov-pl.jpg">
-                <h2>Title</h2>
-                <button>
-                    <p><i class="material-icons">favorite_border</i>Ulubione</p>
-                </button>
-            </div>  -->
-        <!-- </section> -->
      </div>  
 </body>
 </html>

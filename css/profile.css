@@ -1,0 +1,45 @@
+#profile-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#profile-details .columns {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 5em;
+}
+
+.non-bolded {
+    font-weight: 400;
+}
+
+#profile-details img {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    border: black solid 3px;
+
+}
+
+#add-movie-to-list {
+    color: black;
+    box-shadow: 0 0 10px 1px rgba(68, 68, 68, 0.5);
+    border-radius: 1em;
+    padding: 0.5em;
+}
+.my-list{
+    overflow: auto;
+}
+.my-list-movies {
+    display: grid;
+    margin: 16px;
+    grid-template-columns: repeat(4, 280px);
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+}

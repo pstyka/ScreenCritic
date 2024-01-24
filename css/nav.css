@@ -131,7 +131,6 @@ button:hover {
     color: black;
 }
 
-/* Dodatkowy styl dla rozwijanej listy kategorii */
 #categoriesNav .hidden {
     display: none;
 }
